@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Space+Grotesk:wght@300;400;500&display=swap');
-/* .app{
+body{
   font-family: 'Space Grotesk', sans-serif;
-} */
+}
 .bg{
   width: 400px;
   height: 650px;
@@ -10,25 +10,35 @@
 .colorBg{
   width: 375px;
   height: 240px;
-  background-color: #21092F;
   margin: 0 auto;
   position: relative;
 }
 .backCard{
+  position: absolute;
+  left: 6px;
+  border-radius: 6px;
+  z-index: 1;
   width: 286px;
   margin-left: 73px;
   margin-top: 32px;
-  
 }
+.backCvCode{
+  position: absolute;
+  z-index: 7;
+  top: 85px;
+  left: 303px;
+  color: #FFFFFF;
+}
+
 .frontCard{
   width: 285px;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  right: 0%;
+  left: 20px;
   top: 50%;
   bottom: 0.25%;
-  left: 0.35%;
+  
 
 }
 .logoCard{
@@ -39,27 +49,47 @@
   top: 138px;
   left: 20px;
   color: white;
+  padding-left: 19px;
+  padding-right: 27px;margin-bottom: 37px;
 }
 .cardData{
   position: absolute;
   z-index: 5;
   list-style: none;
   top: 160px;
+  padding-right: 27px;
+  padding-left: 17px;
+}
+.number{
+  padding-left: 19px;
+}
+
+ul{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
 }
 h2{
   width: 239px;
   height: 23px;
   top: 85px;
-  left: 20px;
+  left: 55px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 23px;
   letter-spacing: 2.2px;
   font-weight: 500px;
   color: #FFFFFF;
-  padding: 19px;
-  
-
+  padding-left: 19px;
+  padding-right: 27px;
+  margin-top: 37px;
+ 
+}
+li{
+  color: white;
+}
+.cvCode{
+  margin-right: 17px;
 }
 
 /* formContainer */
