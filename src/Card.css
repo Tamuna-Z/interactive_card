@@ -1,17 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Space+Grotesk:wght@300;400;500&display=swap');
-body{
-  font-family: 'Space Grotesk', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.bg{
-  width: 400px;
-  height: 650px;
-  background-color: #FFFFFF;
 
-}
+
 .colorBg{
   width: 375px;
   height: 240px;
@@ -97,10 +85,10 @@ li{
   margin-right: 17px;
 }
 
-.formContainer{
+/* .formContainer{
   margin-top: 131px;
   padding-left: 24px;
-}
+} */
 label{
   margin-bottom: 9px;
   display: block;

@@ -23,7 +23,7 @@ function Card(){
                     </div>
                   </div>
                 </div>
-                <div className="formContainer">
+                {/* <div className="formContainer">
                   <form className="form">
                     <div className="inputName">
                       <label>Cardholder Name</label>
@@ -54,7 +54,7 @@ function Card(){
                     </article>
                     <button>Confirm</button>
                   </form>
-                </div>
+                </div> */}
               </div>
             </div>
           );
