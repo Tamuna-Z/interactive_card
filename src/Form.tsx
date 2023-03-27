@@ -1,5 +1,8 @@
 import "./Form.css";
+import {useState} from 'react';
 function Form() {
+    const[confirmed,setConfirmed]=useState(false);
+
   return (
     <div className="formContainer">
       <form className="form">
@@ -29,8 +32,11 @@ function Form() {
             <input className="half" type="number" placeholder=" 123" />
           </div>
         </article>
-        <button>Confirm</button>
+        <button 
+        onClick={()=> setConfirmed(true)}
+        >Confirm</button>
       </form>
+      
     </div>
   );
 }
