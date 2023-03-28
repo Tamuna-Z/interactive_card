@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import {useState} from "react";
 import Card from './Card';
+import thankComplete from './images/icon-complete.svg';
 // import Thank from './Thank';
 // import Card from './Card';
 // import FirstPage from './FirstPage';
@@ -18,6 +19,7 @@ function App() {
   const [confirmed,setConfirmed]=useState(false);
   return(
     <div>
+      
        <Card/>
 
        <div className="formContainer">
@@ -73,6 +75,18 @@ function App() {
       </form>
       
     </div>
+
+    <div className='thankComplete'>
+        <img  className='completeImg' src ={thankComplete}/>
+        <h1>THANK YOU!</h1>
+        <p>We’ve added your card details</p>
+        <button
+        onClick={()=> setConfirmed(false)}
+         >Continue</button>
+
+      </div>
+
+
     </div>
   )
   

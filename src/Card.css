@@ -5,6 +5,7 @@
   height: 240px;
   margin: 0 auto;
   position: relative;
+  display: block;
 }
 .backCard{
   position: absolute;
@@ -14,6 +15,7 @@
   width: 286px;
   margin-left: 73px;
   margin-top: 32px;
+  display: block;
 }
 .backCvCode{
   position: absolute;
@@ -31,6 +33,7 @@
   left: 20px;
   top: 50%;
   bottom: 0.25%;
+  display: block;
   
 
 }

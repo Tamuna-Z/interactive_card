@@ -16,7 +16,7 @@ function Card() {
       <div className="container">
         <div className="cardContainer">
           <div className="colorBg">
-            <img src={colorBg} />
+            <img  src={colorBg} />
             <img className="backCard" src={backCard} alt="back_card" />
             <p className="backCvCode">{cvc}</p>
             <img className="frontCard" src={frontCard} />
