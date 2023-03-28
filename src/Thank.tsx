@@ -7,7 +7,6 @@ function Thank(){
   const [confirm, setConfirmed]=useState(false)
   return(
     <div>
-      <Card/>
       <div className='thankComplete'>
         <img  className='completeImg' src ={thankComplete}/>
         <h1>THANK YOU!</h1>
