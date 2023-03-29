@@ -6,14 +6,17 @@ import backCard from "./images/bg-card-back.png";
 import frontCard from "./images/bg-card-front.png";
 import colorBg from "./images/bg-main-mobile.png";
 import logo from "./images/card-logo.svg";
+// import {MyInterface} from './MyInterface';
 
 
 function App() {
-  const [name, setName] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [date, setDate] = useState("");
-  const [cvc, setCvc] = useState();
-  const [confirmed,setConfirmed]=useState(false);
+  const [name, setName] = useState<string>("");
+  const [cardNumber, setCardNumber] = useState<string>('');
+  const [date, setDate] = useState<string>('');
+  const [cvc, setCvc] = useState<string>('');
+  const [confirmed,setConfirmed]=useState<boolean>(false);
+
+  
   return(
     <div>
  {/* <Card/> */}
@@ -31,7 +34,7 @@ function App() {
               <h2 className="number">{cardNumber}</h2>
               <ul>
                 <li className="name">{name}</li>
-                {/* <li className="cvCode">{format(new Date(date), "MM /YY")}</li> */}
+                <li className="cvCode">{date}</li>
               </ul>
             </div>
           </div>
@@ -40,13 +43,13 @@ function App() {
     </div>
 {/* form */}
     <div className="formContainer">
-      <form className="form">
+  {!confirmed &&     <form className="form">
         <div className="inputName">
           <label>Cardholder Name</label>
           <input type="text"
            placeholder=" e.g Tamar Zurabashvili"
            value={name}
-           onChange={(e)=>setName(e.target.value)}
+           onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setName(e.target.value)}
             required 
             />
         </div>
@@ -57,10 +60,11 @@ function App() {
             type="number"
             placeholder="e.g. 1234 5678 9123 0000"
             maxLength={19}
-            value={cardNumber.replace(/\s/g, "")
+            
+           onChange={(e)=>setCardNumber(e.target.value)}
+           value={cardNumber.replace(/\s/g, "")
             .replace(/(\d{4})/g, "$1 ")
             .trim()}
-           onChange={(e)=>setCardNumber(e.target.value)}
             required 
           />
         </div>
@@ -70,17 +74,25 @@ function App() {
             <label>Exp. Date (MM/YY)</label>
             <input className="half" type="month" placeholder="MM/YY"
              value={date}
-             onChange={(e)=>setDate(e.target.value)}
+             onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setDate(e.target.value)}
               required 
              />
           </div>
+           
+          {/* interface MyFormProps {
+            setCvc: (value: number) => void;
+  
+          } */}
 
           <div className="inputDate">
             <label>CVC</label>
             <input className="half" type="number" placeholder=" 123"
+            required 
              value={cvc}
-            //  onChange={(e)=>setCvc(e.target.value)}
-              required 
+             onChange={(e)=>setCvc(e.target.value)}
+              
+              
+              
             
              />
           </div>
@@ -89,18 +101,22 @@ function App() {
         <button 
         onClick={()=> setConfirmed(true)}
         >Confirm</button>
-      </form>
+      </form>}
+
+     {confirmed && <Thank setConfirmed ={setConfirmed}/>}
       
     </div>
 
     
     </div>
   ) 
- 
 }
 // {/* thank */}
-function Thank(){
-  const [confirmed,setConfirmed]=useState(false);
+interface ThankProps {
+  setConfirmed: (value: boolean) => void;
+}
+function Thank({setConfirmed}:ThankProps){
+  // const [confirmed,setConfirmed]=useState(false);
   return(
     <div>
       <div className='thankComplete'>
