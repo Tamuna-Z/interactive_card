@@ -9,15 +9,14 @@ body{
 
 /* card */
 
-.bg{
-  display: block;
-}
+
 .colorBg{
   width: 375px;
   height: 240px;
   margin: 0 auto;
   position: relative;
-  display: block;
+  margin-top: 70px;
+  
 }
 .backCard{
   position: absolute;
@@ -26,14 +25,14 @@ body{
   z-index: 1;
   width: 286px;
   margin-left: 73px;
-  margin-top: 32px;
-  display: block;
+  margin-top: 100px;
+  
 }
 .backCvCode{
   position: absolute;
   z-index: 7;
-  top: 85px;
-  left: 303px;
+  top: 80px;
+  left: 300px;
   color: #FFFFFF;
 }
 
@@ -43,9 +42,9 @@ body{
   position: absolute;
   z-index: 1;
   left: 20px;
-  top: 50%;
+  top: 80%;
   bottom: 0.25%;
-  display: block;
+  
   
 
 }
@@ -54,7 +53,7 @@ body{
   z-index: 2;
   width: 50px;
   height: 30px;
-  top: 138px;
+  top: 218px;
   left: 20px;
   color: white;
   padding-left: 19px;
@@ -64,7 +63,7 @@ body{
   position: absolute;
   z-index: 5;
   list-style: none;
-  top: 160px;
+  top: 230px;
   padding-right: 27px;
   padding-left: 17px;
 }
