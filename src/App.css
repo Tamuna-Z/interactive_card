@@ -31,7 +31,7 @@ body{
 .backCvCode{
   position: absolute;
   z-index: 7;
-  top: 80px;
+  top: 145px;
   left: 300px;
   color: #FFFFFF;
 }
@@ -53,7 +53,7 @@ body{
   z-index: 2;
   width: 50px;
   height: 30px;
-  top: 218px;
+  top: 210px;
   left: 20px;
   color: white;
   padding-left: 19px;

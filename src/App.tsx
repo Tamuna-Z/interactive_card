@@ -50,7 +50,7 @@ function App() {
                 placeholder=" e.g Tamar Zurabashvili"
                 value={name}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setName(e.target.value)
+                  setName(e.target.value.toUpperCase())
                 }
                 required
               />
@@ -59,9 +59,9 @@ function App() {
             <div className="inputNumber">
               <label>Card Number</label>
               <input
-                type="number"
+                type="string"
                 placeholder="e.g. 1234 5678 9123 0000"
-                // maxLength={19}
+                maxLength={19}
                 value={cardNumber
                   .replace(/\s/g, "")
                   .replace(/(\d{4})/g, "$1 ")
