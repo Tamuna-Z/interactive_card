@@ -1,14 +1,11 @@
 import React from "react";
 import "./App.css";
 import {useState} from "react";
-import Card from './Card';
 import thankComplete from './images/icon-complete.svg';
-// import Thank from './Thank';
-// import Card from './Card';
-// import FirstPage from './FirstPage';
-// import SecondPage from './SecondPage';
-// import {useState} from 'react';
-
+import backCard from "./images/bg-card-back.png";
+import frontCard from "./images/bg-card-front.png";
+import colorBg from "./images/bg-main-mobile.png";
+import logo from "./images/card-logo.svg";
 
 
 function App() {
@@ -19,10 +16,30 @@ function App() {
   const [confirmed,setConfirmed]=useState(false);
   return(
     <div>
-      
-       <Card/>
+ {/* <Card/> */}
 
-       <div className="formContainer">
+    <div className="bg">
+      <div className="container">
+        <div className="cardContainer">
+          <div className="colorBg">
+            <img className="colorBg" src={colorBg} />
+            <img className="backCard" src={backCard} alt="back_card" />
+            <p className="backCvCode">{cvc}</p>
+            <img className="frontCard" src={frontCard} />
+            <img className="logoCard" src={logo} />
+            <div className="cardData">
+              <h2 className="number">{cardNumber}</h2>
+              <ul>
+                <li className="name">{name}</li>
+                {/* <li className="cvCode">{format(new Date(date), "MM /YY")}</li> */}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{/* form */}
+    <div className="formContainer">
       <form className="form">
         <div className="inputName">
           <label>Cardholder Name</label>
@@ -76,7 +93,17 @@ function App() {
       
     </div>
 
-    <div className='thankComplete'>
+    
+    </div>
+  ) 
+ 
+}
+// {/* thank */}
+function Thank(){
+  const [confirmed,setConfirmed]=useState(false);
+  return(
+    <div>
+      <div className='thankComplete'>
         <img  className='completeImg' src ={thankComplete}/>
         <h1>THANK YOU!</h1>
         <p>We’ve added your card details</p>
@@ -84,17 +111,10 @@ function App() {
         onClick={()=> setConfirmed(false)}
          >Continue</button>
 
-      </div>
-
-
+    </div>
     </div>
   )
-  
-  
- 
- 
+    
 }
    
-   
-
 export default App;
