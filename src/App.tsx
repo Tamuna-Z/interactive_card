@@ -6,7 +6,7 @@ import backCard from "./images/bg-card-back.png";
 import frontCard from "./images/bg-card-front.png";
 import colorBg from "./images/bg-main-mobile.png";
 import logo from "./images/card-logo.svg";
-// import {MyInterface} from './MyInterface';
+// import {format} from "date-fns"
 
 function App() {
   const [name, setName] = useState<string>("");
@@ -108,7 +108,9 @@ function App() {
           </form>
         )}
 
-        {confirmed && <Thank setConfirmed={setConfirmed} />}
+        {confirmed && <Thank setConfirmed={setConfirmed} setName={setName} setCardNumber={setCardNumber}
+        setDate={setDate}
+        setCvc={setCvc}/>}
       </div>
     </div>
   );
@@ -116,16 +118,28 @@ function App() {
 // {/* thank */}
 interface ThankProps {
   setConfirmed: (value: boolean) => void;
+  setName: (value: string) => void;
+  setCardNumber:(value: string) => void;
+  setDate: (value: string) => void;
+  setCvc: (value: string) => void;
 }
-function Thank({ setConfirmed }: ThankProps) {
-  // const [confirmed,setConfirmed]=useState(false);
+function Thank({ setConfirmed ,setName,setCardNumber,setDate,setCvc}: ThankProps) {
+  const resetClick=()=>{
+    setName('');
+    setCardNumber('');
+    setDate('');
+    setCvc('');
+  }
   return (
     <div>
       <div className="thankComplete">
         <img className="completeImg" src={thankComplete} />
         <h1>THANK YOU!</h1>
         <p>We’ve added your card details</p>
-        <button onClick={() => setConfirmed(false)}>Continue</button>
+        <button 
+         onClick={() => setConfirmed(false)}>Continue</button>
+         
+         {/* onClick={resetClick} */}
       </div>
     </div>
   );
