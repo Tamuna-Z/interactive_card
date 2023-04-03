@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import thankComplete from "./images/icon-complete.svg";
 import backCard from "./images/bg-card-back.png";
 import frontCard from "./images/bg-card-front.png";
@@ -14,16 +14,26 @@ function App() {
   const [date, setDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
   const [confirmed, setConfirmed] = useState<boolean>(false);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
-  const [errors, setErrors] = useState<string>("");
+  const [isValid, setIsValid] = useState<boolean>(false);
+  function validateUsername(name:string) {
+    // perform validation logic here
+    // return true if the username is valid, false otherwise
+    return name.length >= 3 
+    // && /^[a-zA-Z0-9]+$/.test(name)
+    ;
+  }
 
   useEffect(() => {
-    if (name === '') {
-      setErrors(`write user name`);
-    } else {
-      setErrors("");
-    }
-  }, [errors]);
+    setIsValid(validateUsername(name));
+  }, [name]);
+
+  // useEffect(() => {
+  //   if (name === '') {
+  //     setErrors(`write user name`);
+  //   } else {
+  //     setErrors('');
+  //   }
+  // }, [errors]);
 
   return (
     <div>
@@ -52,7 +62,7 @@ function App() {
       {/* form */}
       <div className="formContainer">
         {!confirmed && (
-          <form  action = "#"  method ="post"className="form">
+          <form action="#" method="post" className="form">
             <div className="inputName">
               <label>Cardholder Name</label>
               <input
@@ -65,7 +75,13 @@ function App() {
                 }
                 required
               />
-              <span className ="infoError">{errors}</span>
+              {!isValid && (
+                <div>
+                  <p style={{ color: "red" }}>
+                  Username must be at least 3 characters.
+                </p>
+                </div>
+              )}
             </div>
 
             <div className="inputNumber">
@@ -120,9 +136,15 @@ function App() {
           </form>
         )}
 
-        {confirmed && <Thank setConfirmed={setConfirmed} setName={setName} setCardNumber={setCardNumber}
-        setDate={setDate}
-        setCvc={setCvc}/>}
+        {confirmed && (
+          <Thank
+            setConfirmed={setConfirmed}
+            setName={setName}
+            setCardNumber={setCardNumber}
+            setDate={setDate}
+            setCvc={setCvc}
+          />
+        )}
       </div>
     </div>
   );
@@ -131,27 +153,32 @@ function App() {
 interface ThankProps {
   setConfirmed: (value: boolean) => void;
   setName: (value: string) => void;
-  setCardNumber:(value: string) => void;
+  setCardNumber: (value: string) => void;
   setDate: (value: string) => void;
   setCvc: (value: string) => void;
 }
-function Thank({ setConfirmed ,setName,setCardNumber,setDate,setCvc}: ThankProps) {
-  const resetClick=()=>{
-    setName('');
-    setCardNumber('');
-    setDate('');
-    setCvc('');
-  }
+function Thank({
+  setConfirmed,
+  setName,
+  setCardNumber,
+  setDate,
+  setCvc,
+}: ThankProps) {
+  const resetClick = () => {
+    setName("");
+    setCardNumber("");
+    setDate("");
+    setCvc("");
+  };
   return (
     <div>
       <div className="thankComplete">
         <img className="completeImg" src={thankComplete} />
         <h1>THANK YOU!</h1>
         <p>We’ve added your card details</p>
-        <button 
-         onClick={() => setConfirmed(false)}>Continue</button>
-         
-         {/* onClick={resetClick} */}
+        <button onClick={() => setConfirmed(false)}>Continue</button>
+
+        {/* onClick={resetClick} */}
       </div>
     </div>
   );
