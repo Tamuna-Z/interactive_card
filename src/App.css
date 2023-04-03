@@ -165,7 +165,7 @@ input{
   width: 327px;
   height: 45px;
   border-radius: 8px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
  border-width: 1px;
  border-color: #DFDEE0;
 }
@@ -226,6 +226,14 @@ p{
   text-align: center;
   margin-bottom: 48px;
   
+}
+.error{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 2px;
+
 }
 button{
   width: 327px;

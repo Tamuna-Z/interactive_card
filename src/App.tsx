@@ -77,7 +77,7 @@ function App() {
               />
               {!isValid && (
                 <div>
-                  <p style={{ color: "red" }}>
+                  <p  className ="error"style={{ color: "red" }}>
                   Username must be at least 3 characters.
                 </p>
                 </div>
