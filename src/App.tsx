@@ -14,7 +14,7 @@ function App() {
   const [date, setDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
   const [confirmed, setConfirmed] = useState<boolean>(false);
-  const [isValid, setIsValid] = useState<boolean>(false);
+  const [isValid, setIsValid] = useState<boolean>(true);
   function validateUsername(name:string) {
     // perform validation logic here
     // return true if the username is valid, false otherwise
@@ -36,7 +36,7 @@ function App() {
   // }, [errors]);
 
   return (
-    <div>
+    <div className="mainContainer">
       {/* <Card/> */}
 
       <div className="bg">
@@ -75,7 +75,7 @@ function App() {
                 }
                 required
               />
-              {!isValid && (
+              {isValid && (
                 <div>
                   <p  className ="error"style={{ color: "red" }}>
                   Username must be at least 3 characters.

@@ -44,9 +44,6 @@ body{
   left: 20px;
   top: 80%;
   bottom: 0.25%;
-  
-  
-
 }
 .logoCard{
   position: absolute;
@@ -244,7 +241,7 @@ button{
 
 @media(min-width:1440px){
   .colorBg{
-    width: 1440px;
+    width: 483px;
     height: 900px;
     margin: 0 auto;
     position: relative; 
@@ -254,11 +251,48 @@ button{
     position: absolute;
     border-radius: 6px;
     z-index: 1;
-    width: 248px;
-    height: 657px;
+    width: 447px;
+    height: 245px;
     margin-left: 0px;
-    margin-top: 0px;
+    top: 380px;
+    left: 258px;
     
+  }
+  .backCvCode{
+    bottom: 300px;  
+  }
+  
+  .frontCard{
+    width: 447px;
+    height: 245px;
+    left: 164px;
+    top: 200px;
+  }
+  .logoCard{
+    top: 290px;
+    left: 180px;
+  }
+  .cardData{
+    top: 310px;
+    padding-right: 67px;
+    padding-left: 190px;
+  }
+  .number{
+    padding-left: 30px;
+    top:280px;
+  }
+  /* .cvCode{
+    margin-right: 117px;
+    
+  } */
+  .mainContainer{
+    display: flex;
+    justify-content: space-around;
+
+  }
+  .formContainer{
+    margin-left: 300px;
+    margin-top: 340px;
   }
 
 }
