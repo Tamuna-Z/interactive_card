@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import thankComplete from "./images/icon-complete.svg";
 import backCard from "./images/bg-card-back.png";
 import frontCard from "./images/bg-card-front.png";
@@ -14,6 +14,16 @@ function App() {
   const [date, setDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
   const [confirmed, setConfirmed] = useState<boolean>(false);
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [errors, setErrors] = useState<string>("");
+
+  useEffect(() => {
+    if (name === '') {
+      setErrors(`write user name`);
+    } else {
+      setErrors("");
+    }
+  }, [errors]);
 
   return (
     <div>
@@ -42,18 +52,20 @@ function App() {
       {/* form */}
       <div className="formContainer">
         {!confirmed && (
-          <form className="form">
+          <form  action = "#"  method ="post"className="form">
             <div className="inputName">
               <label>Cardholder Name</label>
               <input
                 type="text"
                 placeholder=" e.g Tamar Zurabashvili"
                 value={name}
+                autoComplete="off"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setName(e.target.value.toUpperCase())
                 }
                 required
               />
+              <span className ="infoError">{errors}</span>
             </div>
 
             <div className="inputNumber">

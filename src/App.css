@@ -234,3 +234,24 @@ button{
   background-color: #21092F;
 }
 
+@media(min-width:1440px){
+  .colorBg{
+    width: 1440px;
+    height: 900px;
+    margin: 0 auto;
+    position: relative; 
+    background-color: aqua;
+  }
+  .backCard{
+    position: absolute;
+    border-radius: 6px;
+    z-index: 1;
+    width: 248px;
+    height: 657px;
+    margin-left: 0px;
+    margin-top: 0px;
+    
+  }
+
+}
+
