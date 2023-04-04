@@ -14,26 +14,42 @@ function App() {
   const [date, setDate] = useState<string>("");
   const [cvc, setCvc] = useState<string>("");
   const [confirmed, setConfirmed] = useState<boolean>(false);
-  const [isValid, setIsValid] = useState<boolean>(true);
-  function validateUsername(name:string) {
-    // perform validation logic here
-    // return true if the username is valid, false otherwise
-    return name.length >= 3 
-    // && /^[a-zA-Z0-9]+$/.test(name)
-    ;
+  const [isValid, setIsValid] = useState<boolean>(false);
+  const [showError, setShowError] = useState<boolean>(false);
+
+  // validation username
+
+  function validateUsername(name: string) {
+    return name.length >= 3 && /^[a-zA-Z0-9]+$/.test(name);
   }
 
   useEffect(() => {
     setIsValid(validateUsername(name));
   }, [name]);
 
-  // useEffect(() => {
-  //   if (name === '') {
-  //     setErrors(`write user name`);
-  //   } else {
-  //     setErrors('');
-  //   }
-  // }, [errors]);
+  useEffect(() => {
+    setShowError(!isValid && name !== "");
+  }, [isValid, name]);
+  // validation of cvc
+
+  function validateCvc(cvc: string) {
+    return /^\d{3}$/.test(cvc);
+  }
+
+  useEffect(() => {
+    setIsValid(validateCvc(cvc));
+  }, [cvc]);
+
+  useEffect(() => {
+    setShowError(!isValid && cvc !== "");
+  }, [isValid, cvc]);
+
+  // number validation
+
+  const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.replace(/[^\d]/g, '');
+    setCardNumber(value.replace(/(.{4})/g, '$1 ').trim());
+  }
 
   return (
     <div className="mainContainer">
@@ -75,11 +91,11 @@ function App() {
                 }
                 required
               />
-              {isValid && (
+              {showError && (
                 <div>
-                  <p  className ="error"style={{ color: "red" }}>
-                  Username must be at least 3 characters.
-                </p>
+                  <p className="error" style={{ color: "red" }}>
+                    Username must be at least 3 characters.
+                  </p>
                 </div>
               )}
             </div>
@@ -94,7 +110,7 @@ function App() {
                   .replace(/\s/g, "")
                   .replace(/(\d{4})/g, "$1 ")
                   .trim()}
-                onChange={(e) => setCardNumber(e.target.value)}
+                onChange={handleCardNumberChange}
                 required
               />
             </div>
@@ -128,11 +144,21 @@ function App() {
                   required
                   value={cvc}
                   onChange={(e) => setCvc(e.target.value)}
+                  pattern="[0-9]*"
+                  maxLength={3}
                 />
+                {showError && (
+                  <div>
+                    <p className="error" style={{ color: "red" }}>
+                      CVC must be a three-digit number.
+                    </p>
+                  </div>
+                )}
               </div>
             </article>
 
-            <button onClick={() => setConfirmed(true)}>Confirm</button>
+            <button onClick={() => setConfirmed(true)}
+            disabled={name === "" || cardNumber === "" || date === "" || cvc === ""}>Confirm</button>
           </form>
         )}
 
