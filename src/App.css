@@ -62,23 +62,22 @@ body{
   list-style: none;
   top: 230px;
   padding-right: 27px;
-  padding-left: 17px;
+  padding-left: 10px; 
 }
 .number{
-  padding-left: 19px;
+  padding-left: 14px;
 }
 
 ul{
   display: flex;
   justify-content: space-between;
-  padding-left: 24px;
+  padding-left: 14px;
 }
 h2{
   width: 239px;
   height: 23px;
   top: 85px;
   left: 55px;
-  font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   line-height: 23px;
   letter-spacing: 2.2px;
@@ -92,9 +91,7 @@ h2{
 li{
   color: white;
 }
-.cvCode{
-  margin-right: 17px;
-}
+
 
 label{
   margin-bottom: 9px;
@@ -121,11 +118,8 @@ input:focus {
   gap: 16px;
 }
 
-article{
-  
+article{ 
   display: flex;
- 
- 
 }
 .inputData{
   display: flex;
@@ -174,11 +168,8 @@ input:focus {
   gap: 16px;
 }
 
-article{
-  
+article{ 
   display: flex;
- 
- 
 }
 .inputData{
   display: flex;
@@ -259,7 +250,9 @@ button{
     
   }
   .backCvCode{
-    bottom: 300px;  
+    bottom: 300px; 
+    top:573px;
+    left: 600px; 
   }
   
   .frontCard{
@@ -274,26 +267,24 @@ button{
   }
   .cardData{
     top: 310px;
-    padding-right: 67px;
     padding-left: 190px;
   }
   .number{
-    padding-left: 30px;
+    left: 10px;
     top:280px;
   }
-  /* .cvCode{
-    margin-right: 117px;
-    
-  } */
+
   .mainContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between123;
 
   }
   .formContainer{
     margin-left: 300px;
     margin-top: 340px;
   }
+
+ 
 
 }
 

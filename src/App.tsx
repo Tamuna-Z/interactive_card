@@ -100,7 +100,7 @@ function App() {
             </div>
 
             <article>
-              <div className="inputDate">
+              <div className="inputDate month">
                 <label>Exp. Date (MM/YY)</label>
                 <input
                   className="half"
@@ -119,7 +119,7 @@ function App() {
   
           } */}
 
-              <div className="inputDate">
+              <div className="inputDateCv">
                 <label>CVC</label>
                 <input
                   className="half"
