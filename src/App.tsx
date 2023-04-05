@@ -21,8 +21,11 @@ function App() {
   // validation username
 
  
+  // function validateUsername(name: string) {
+  //   return name.length >= 3 && /^[a-zA-Z0-9 ]+$/.test(name);
+  // }
   function validateUsername(name: string) {
-    return name.length >= 3 && /^[a-zA-Z0-9 ]+$/.test(name);
+    return name.length >= 3 && /^[a-zA-Z\s- ]+$/.test(name);
   }
 
   useEffect(() => {
@@ -110,6 +113,12 @@ function App() {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setName(e.target.value.toUpperCase())
                 }
+                onKeyPress={(e) => {
+                  const regex = /^[a-zA-Z\s-]+$/;
+                  if (!regex.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
                 required
               />
               {showError && (
@@ -164,7 +173,7 @@ function App() {
                   placeholder=" 123"
                   required
                   value={cvc}
-                  onChange={(e) => setCvc(e.target.value)}
+                  onChange={(e) => setCvc(e.target.value.slice(0,3))}
                   pattern="[0-9]*"
                   maxLength={3}
                 />
