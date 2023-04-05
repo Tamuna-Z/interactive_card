@@ -6,7 +6,6 @@ import backCard from "./images/bg-card-back.png";
 import frontCard from "./images/bg-card-front.png";
 import colorBg from "./images/bg-main-mobile.png";
 import logo from "./images/card-logo.svg";
-// import {format} from "date-fns"
 
 function App() {
   const [name, setName] = useState<string>("");
@@ -16,11 +15,14 @@ function App() {
   const [confirmed, setConfirmed] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean>(false);
   const [showError, setShowError] = useState<boolean>(false);
+  const [isCvcValid, setIsCvcValid] = useState<boolean>(false);
+  const [showCvcError, setShowCvcError] = useState<boolean>(false);
 
   // validation username
 
+ 
   function validateUsername(name: string) {
-    return name.length >= 3 && /^[a-zA-Z0-9]+$/.test(name);
+    return name.length >= 3 && /^[a-zA-Z0-9 ]+$/.test(name);
   }
 
   useEffect(() => {
@@ -37,19 +39,38 @@ function App() {
   }
 
   useEffect(() => {
-    setIsValid(validateCvc(cvc));
+    setIsCvcValid(validateCvc(cvc));
   }, [cvc]);
 
   useEffect(() => {
-    setShowError(!isValid && cvc !== "");
-  }, [isValid, cvc]);
+    setShowCvcError(!isCvcValid && cvc !== "");
+  }, [isCvcValid, cvc]);
 
   // number validation
 
-  const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value.replace(/[^\d]/g, '');
-    setCardNumber(value.replace(/(.{4})/g, '$1 ').trim());
-  }
+  const handleCardNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = event.target.value.replace(/[^\d\s]/g, "");
+    setCardNumber(
+      value
+        .replace(/\s+/g, " ")
+        .replace(/(.{4})/g, "$1 ")
+        .trim()
+    );
+  };
+
+  // const resetClick = () => {
+  //   setName("");
+  //   setCardNumber("");
+  //   setDate("");
+  //   setCvc("");
+  // };
+
+  // const handleClickButton = () => {
+  //   setConfirmed(false);
+  //   resetClick();
+  // };
 
   return (
     <div className="mainContainer">
@@ -157,8 +178,14 @@ function App() {
               </div>
             </article>
 
-            <button onClick={() => setConfirmed(true)}
-            disabled={name === "" || cardNumber === "" || date === "" || cvc === ""}>Confirm</button>
+            <button
+              onClick={() => setConfirmed(true)}
+              disabled={
+                name === "" || cardNumber === "" || date === "" || cvc === ""
+              }
+            >
+              Confirm
+            </button>
           </form>
         )}
 
@@ -183,6 +210,7 @@ interface ThankProps {
   setDate: (value: string) => void;
   setCvc: (value: string) => void;
 }
+
 function Thank({
   setConfirmed,
   setName,
@@ -190,19 +218,24 @@ function Thank({
   setDate,
   setCvc,
 }: ThankProps) {
-  const resetClick = () => {
-    setName("");
-    setCardNumber("");
-    setDate("");
-    setCvc("");
-  };
+  function resetClick() {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div>
       <div className="thankComplete">
         <img className="completeImg" src={thankComplete} />
         <h1>THANK YOU!</h1>
         <p>We’ve added your card details</p>
-        <button onClick={() => setConfirmed(false)}>Continue</button>
+        <button
+          onClick={() => {
+            setConfirmed(false);
+           
+          }}
+        >
+          Continue
+        </button>
 
         {/* onClick={resetClick} */}
       </div>
