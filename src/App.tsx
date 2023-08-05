@@ -18,12 +18,6 @@ function App() {
   const [isCvcValid, setIsCvcValid] = useState<boolean>(false);
   const [showCvcError, setShowCvcError] = useState<boolean>(false);
 
-  // validation username
-
- 
-  // function validateUsername(name: string) {
-  //   return name.length >= 3 && /^[a-zA-Z0-9 ]+$/.test(name);
-  // }
   function validateUsername(name: string) {
     return name.length >= 3 && /^[a-zA-Z\s- ]+$/.test(name);
   }
@@ -35,8 +29,8 @@ function App() {
   useEffect(() => {
     setShowError(!isValid && name !== "");
   }, [isValid, name]);
-  // validation of cvc
 
+  // validation of cvc
   function validateCvc(cvc: string) {
     return /^\d{3}$/.test(cvc);
   }
@@ -63,17 +57,15 @@ function App() {
     );
   };
 
-  // const resetClick = () => {
-  //   setName("");
-  //   setCardNumber("");
-  //   setDate("");
-  //   setCvc("");
-  // };
-
-  // const handleClickButton = () => {
-  //   setConfirmed(false);
-  //   resetClick();
-  // };
+  const handleContinue = (event: any) => {
+    event.preventDefault();
+    // perform validation or other actions
+    setConfirmed(true);
+    setName("");
+    setCardNumber("");
+    setDate("");
+    setCvc("");
+  };
 
   return (
     <div className="mainContainer">
@@ -102,12 +94,17 @@ function App() {
       {/* form */}
       <div className="formContainer">
         {!confirmed && (
-          <form action="#" method="post" className="form">
+          <form
+            action="#"
+            method="post"
+            className="form"
+            onSubmit={handleContinue}
+          >
             <div className="inputName">
               <label>Cardholder Name</label>
               <input
                 type="text"
-                placeholder=" e.g Tamar Zurabashvili"
+                placeholder=" Name and Surname"
                 value={name}
                 autoComplete="off"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -134,7 +131,7 @@ function App() {
               <label>Card Number</label>
               <input
                 type="string"
-                placeholder="e.g. 1234 5678 9123 0000"
+                placeholder="xxxx xxxx xxxx xxxx"
                 maxLength={19}
                 value={cardNumber
                   .replace(/\s/g, "")
@@ -160,20 +157,15 @@ function App() {
                 />
               </div>
 
-              {/* interface MyFormProps {
-            setCvc: (value: number) => void;
-  
-          } */}
-
               <div className="inputDateCv">
                 <label>CVC</label>
                 <input
                   className="half"
                   type="number"
-                  placeholder=" 123"
+                  placeholder=" xxx"
                   required
                   value={cvc}
-                  onChange={(e) => setCvc(e.target.value.slice(0,3))}
+                  onChange={(e) => setCvc(e.target.value.slice(0, 3))}
                   pattern="[0-9]*"
                   maxLength={3}
                 />
@@ -240,7 +232,6 @@ function Thank({
         <button
           onClick={() => {
             setConfirmed(false);
-           
           }}
         >
           Continue
